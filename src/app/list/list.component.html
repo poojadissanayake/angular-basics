@@ -1,0 +1,12 @@
+<h1>Breweries</h1>
+
+<!-- this ul/child elements gets displayed only if brews is assigned and receives data from the API  -->
+<ul *ngIf="brews">
+
+    <!-- *ngFor lets you iterate  -->
+  <li *ngFor="let brew of brews">
+    <p class="name">{{ brew.name }}</p>
+    <p class="country">{{ brew.country }}</p>
+    <a class="site" href="{{ brew.website_url }}">site</a>
+  </li>
+</ul>

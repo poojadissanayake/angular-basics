@@ -1,0 +1,42 @@
+<h1>Welcome !!</h1>
+
+<!-- one way data binding -->
+<div class="play-container">
+    <p>You've clicked <span (click)="countClick()"> this </span> {{clickCounter}} times.</p>
+</div>
+
+<!-- two way data binding  -->
+<div class="play-container">
+    <p>
+        <input type="text" [(ngModel)] = "name">
+        <br>
+        <strong>You said: </strong> {{name}}
+       
+    </p>
+</div>
+
+<!-- style binding -> done via property binding "[]" [style.background-color]
+<div class="play-container" [style.background-color]="clickCounter > 4 ? 'yellow' : 'lightgray'"> -->
+
+    <!-- to specify multiple CSS properties-> [ngStyle]
+    <div class="play-container" [ngStyle]="{
+        'background-color': clickCounter > 4 ? 'yellow' : 'lightgray',
+        'border':           clickCounter > 4 ? '4px solid black' : 'none'}
+    "> -->
+
+    <!-- class binding -> [class.active] single class
+<div class="play-container" [class.active]="clickCounter > 4"> -->
+    
+    <!-- multiple classes [ngClass=""] -->
+<div class="play-container" [ngClass]="setClasses()">
+
+    <!-- ng-template is specific to angular 8  -->
+    <ng-template [ngIf]="clickCounter > 4" [ngIfElse]="none">
+        <p>The click counter <strong>IS GREATER</strong> than 4.</p>
+    </ng-template>
+
+    <ng-template #none>
+        <p>The click counter is <strong>not greater</strong> than 4.</p>
+    </ng-template>
+</div>
+
